@@ -12,13 +12,17 @@
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write .",
 		"test:integration": "playwright test",
-		"test:unit": "vitest"
+		"test:unit": "vitest",
+		"db:push": "drizzle-kit push:sqlite",
+		"db:studio": "drizzle-kit studio",
+		"db:generate": "drizzle-kit generate:sqlite"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
+		"@types/better-sqlite3": "^7.6.8",
 		"@types/eslint": "8.56.0",
 		"@typescript-eslint/eslint-plugin": "^6.0.0",
 		"@typescript-eslint/parser": "^6.0.0",
@@ -34,5 +38,11 @@
 		"vite": "^5.0.3",
 		"vitest": "^1.2.0"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@libsql/client": "^0.4.0-pre.7",
+		"better-sqlite3": "^9.3.0",
+		"drizzle-kit": "^0.20.13",
+		"drizzle-orm": "^0.29.3"
+	}
 }
