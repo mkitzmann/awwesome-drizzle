@@ -1,5 +1,9 @@
-<h1>Welcome to SvelteKit</h1>
-
 <script lang="ts">
-	console.log('test')
+export let data
+
+$: dataArray = Object.entries(data)
+console.log(data)
 </script>
+
+{JSON.stringify(data)}
+
