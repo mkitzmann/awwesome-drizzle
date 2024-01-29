@@ -1,16 +1,15 @@
 import {db} from "./index";
-import {event} from "./schema";
+import {project} from "./schema";
+import * as crypto from "crypto";
 
-export const addEventAction = async () => {
+export const addProjectAction = async (item) => {
 	// const description = formData.get("description") as string;
 	// const title = formData.get("title") as string;
-
-	db.insert(event)
+	db.insert(project)
 		.values({
-			description:'description',
-			id: 4,
-			admin: 2,
-			title: 'title',
+			id: crypto.randomUUID(),
+			websiteUrl: item
+
 		})
 		.run();
 };

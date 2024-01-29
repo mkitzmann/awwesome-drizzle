@@ -1,8 +1,13 @@
 import { text, integer, sqliteTable } from "drizzle-orm/sqlite-core";
 
-export const event = sqliteTable("event", {
+export const project = sqliteTable("project", {
 	id: text("id").primaryKey(),
-	admin: text("admin_id"),
-	title: text("title").notNull(),
-	description: text("description"),
+	websiteUrl: text("website_url").notNull(),
+	licenses: text("licenses"),
+	platforms: text("platforms"),
+	tags: text("tags"),
+	sourceCodeUrl: text("source_code_url"),
+	stargazersCount: integer("stargazers_count"),
+	createdAt: integer("created_at", {mode: 'timestamp'}),
+	updatedAt: integer("updated_at", {mode: 'timestamp'}),
 });

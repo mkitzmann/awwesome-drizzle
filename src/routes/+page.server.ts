@@ -1,11 +1,7 @@
 import {db} from "../lib/server/db";
-import {event} from "../lib/server/db/schema";
-import {addEventAction} from "../lib/server/db/actions";
+import {project} from "../lib/server/db/schema";
 
-	async function getEvent() {
-		// console.log(db.select().from(event))
-		return db.select().from(event);
-	}
 export async function load({params}) {
-		return {...await getEvent()}
+	const projects = db.select().from(project)
+	return {...await projects};
 }
