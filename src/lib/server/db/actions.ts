@@ -5,9 +5,9 @@ import {Project} from "../../types";
 
 export const addProjectAction = async (projects: Project[]) => {
 	db.insert(project)
-		.values({
+		.values(projects.map((item) => ({
 			id: crypto.randomUUID(),
-			websiteUrl: projects[0].primary_url
-		})
+			websiteUrl: item.primary_url
+		})))
 		.run();
 };
