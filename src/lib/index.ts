@@ -1,1 +1,6 @@
-// place files you want to import through the `$lib` alias in this folder.
+export const removeTrailingSlashes = (input?: string | unknown): string => {
+	if (!input || typeof input !== 'string') {
+		return;
+	}
+	return input.replace(/\/$/, '');
+};
