@@ -1,3 +1,5 @@
+import {project} from "../server/db/schema";
+
 export type AwwesomeConfig = {
 	chunkSize: number;
 	lowCommitCount: number;
@@ -5,28 +7,31 @@ export type AwwesomeConfig = {
 	requestDelay?: number;
 };
 
-export type Project = {
-	name: string | null;
-	primary_url: string | null;
-	source_url?: string | null;
-	demo_url?: string | null;
-	description?: string | null;
-	license?: {
-		name?: string;
-		description?: string;
-		url?: string;
-		nickname?: string;
-	};
-	stack?: string | null;
-	category?: string;
-	stars?: number | null;
-	avatar_url?: string | null;
-	topics?: string[];
-	commit_history?: CommitCount;
-	pushedAt?: Date;
-	firstAdded?: Date;
-	createdAt?: Date;
-};
+export type Project = typeof project.$inferInsert;
+//
+//
+// export type Project = {
+// 	name: string | null;
+// 	primary_url: string | null;
+// 	source_url?: string | null;
+// 	demo_url?: string | null;
+// 	description?: string | null;
+// 	license?: {
+// 		name?: string;
+// 		description?: string;
+// 		url?: string;
+// 		nickname?: string;
+// 	};
+// 	stack?: string | null;
+// 	category?: string;
+// 	stars?: number | null;
+// 	avatar_url?: string | null;
+// 	topics?: string[];
+// 	commit_history?: CommitCount;
+// 	pushedAt?: Date;
+// 	firstAdded?: Date;
+// 	createdAt?: Date;
+// };
 
 export type CommitCount = {
 	[key: string]: number;
