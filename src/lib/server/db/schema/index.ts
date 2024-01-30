@@ -1,22 +1,23 @@
 import {text, integer, sqliteTable, primaryKey} from "drizzle-orm/sqlite-core";
 import {relations} from "drizzle-orm";
+import {int, mysqlTable, varchar} from "drizzle-orm/mysql-core";
 
-export const projects = sqliteTable("projects", {
-	primary_url: text("primary_url").primaryKey(),
-	name: text("name"),
-	source_url: text("source_url"),
-	demo_url: text("demo_url"),
-	description: text("description"),
-	license: text("license", { mode: 'json' }),
-	stack: text("stack"),
-	// categories: text("category"),
-	stars: integer("stars"),
-	avatar_url: text("avatar_url"),
-	// topics: text("topics", { mode: 'json' }),
-	commit_history: text("commit_history", { mode: 'json' }),
-	pushedAt: integer("pushed_at", {mode: 'timestamp'}),
-	firstAdded: integer("first_added", {mode: 'timestamp'}),
-	createdAt: integer("created_at", {mode: 'timestamp'}),
+export const projects = mysqlTable("projects", {
+	primaryUrl: int("primary_url"),
+	// name: text("name"),
+	// source_url: text("source_url"),
+	// demo_url: text("demo_url"),
+	// description: text("description"),
+	// license: text("license", { mode: 'json' }),
+	// stack: text("stack"),
+	// // categories: text("category"),
+	// stars: integer("stars"),
+	// avatar_url: text("avatar_url"),
+	// // topics: text("topics", { mode: 'json' }),
+	// commit_history: text("commit_history", { mode: 'json' }),
+	// pushedAt: integer("pushed_at", {mode: 'timestamp'}),
+	// firstAdded: integer("first_added", {mode: 'timestamp'}),
+	// createdAt: integer("created_at", {mode: 'timestamp'}),
 });
 
 // export const projectRelations = relations(projects, ({ one, many }) => ({

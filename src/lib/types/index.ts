@@ -8,9 +8,10 @@ export type AwwesomeConfig = {
 	requestDelay?: number;
 };
 
-export type Project = InferSelectModel<typeof projects> & {
-	categories: Category
-};
+export type Project = typeof projects.$inferInsert;
+const test: Project = {
+	primaryUrl: 12
+}
 
 export type Category = InferSelectModel<typeof categories>
 

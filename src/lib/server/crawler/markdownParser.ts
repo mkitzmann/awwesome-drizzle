@@ -1,7 +1,7 @@
 import slugify from "slugify";
-import {removeTrailingSlashes} from "../../index";
 import {AllCategories, Category, Project} from "../../types";
 import {
+	extractCategory,
 	extractDemoUrl,
 	extractDescription,
 	extractLicense,
@@ -31,12 +31,7 @@ function transformObjectToArray(obj): Category[] {
 	return array;
 }
 
-/*
- Extract the category from the markdown heading
- */
-function extractCategory(line: string) {
-	return line.slice(4).trim().split(' - ');
-}
+
 
 export function extractRepositories(markdownText: string): ProjectsAndCategories {
 	const lines = markdownText.split('\n');
@@ -86,7 +81,6 @@ export function extractRepositories(markdownText: string): ProjectsAndCategories
 			demo_url: extractDemoUrl(line),
 			// categories: currentCategoryURL
 		};
-		console.log(project)
 		projects.push(project);
 	}
 
