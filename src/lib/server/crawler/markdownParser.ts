@@ -1,53 +1,21 @@
 import slugify from "slugify";
 import {removeTrailingSlashes} from "../../index";
 import {AllCategories, Category, Project} from "../../types";
+import {
+	extractDemoUrl,
+	extractDescription,
+	extractLicense,
+	extractName,
+	extractPrimaryUrl,
+	extractSourceUrl,
+	extractStack
+} from "./extractors";
 
 export interface ProjectsAndCategories {
 	projects: Project[];
 	categories: AllCategories;
 }
 
-function extractName(input) {
-	const regex = /\[([^\]]+)\]\(/;
-	const match = input.match(regex);
-	return match ? match[1].trim() : null;
-}
-
-function extractPrimaryUrl(input) {
-	const regex = /\((https?:\/\/[^)]+)\)/;
-	const match = input.match(regex);
-	return match ? removeTrailingSlashes(match[1].trim()) : null;
-}
-
-function extractDescription(input) {
-	const regex = /-\s*\[(?:[^\]]+)\]\([^)]+\)\s*-\s*(.+?)(?:\s*\(|`)/;
-	const match = input.match(regex);
-	return match ? match[1]?.trim() : undefined;
-}
-
-function extractStack(input) {
-	const regex = /`([^`]+)`\s*`([^`]+)`$/;
-	const match = input.match(regex);
-	return match ? match[1].trim() : undefined;
-}
-
-function extractLicense(input) {
-	const regex = /`([^`]+)`\s*`([^`]+)`$/;
-	const match = input.match(regex);
-	return match ? match[0].trim() : undefined;
-}
-
-function extractSourceUrl(input) {
-	const regex = /\[Source Code\]\(([^)]+)/;
-	const match = input.match(regex);
-	return match ? removeTrailingSlashes(match[1].trim()) : undefined;
-}
-
-function extractDemoUrl(input) {
-	const regex = /\[Demo\]\(([^)]+)/;
-	const match = input.match(regex);
-	return match ? match[1].trim() : undefined;
-}
 
 function transformObjectToArray(obj): Category[] {
 	const array = [];
@@ -108,21 +76,23 @@ export function extractRepositories(markdownText: string): ProjectsAndCategories
 		}
 
 		const project: Project = {
-			name: extractName(line),
 			primary_url: extractPrimaryUrl(line),
+			name: extractName(line),
+			firstAdded: new Date(),
 			description: extractDescription(line),
 			stack: extractStack(line),
 			license: extractLicense(line) ? { name: extractLicense(line) } : undefined,
 			source_url: extractSourceUrl(line),
 			demo_url: extractDemoUrl(line),
-			category: currentCategoryURL
+			// categories: currentCategoryURL
 		};
+		console.log(project)
 		projects.push(project);
 	}
 
-	allCategories.tree = allCategories.tree.sort((categoryA, categoryB) =>
-		categoryA.slug.localeCompare(categoryB.slug)
-	);
+	// allCategories.tree = allCategories.tree.sort((categoryA, categoryB) =>
+	// 	categoryA.slug.localeCompare(categoryB.slug)
+	// );
 
 	return { projects, categories: allCategories };
 }

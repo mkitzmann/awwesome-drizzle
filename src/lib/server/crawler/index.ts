@@ -1,6 +1,6 @@
 import {config} from "../../../../awwesome.config";
 import {Project} from "../../types";
-import {extractRepositories} from "./extractProjects";
+import {extractRepositories} from "./markdownParser";
 
 export async function getProjectsFromSources(): Promise<Project[]> {
 	const markdown = await combineSources(config.urls);

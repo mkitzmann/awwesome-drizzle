@@ -55,13 +55,11 @@ export const categories = sqliteTable("categories", {
 // 	projects: many(projects),
 // }));
 //
-// export const projectsToCategories = sqliteTable('projects_to_categories', {
-// 		projectPrimaryUrl: text('project_primary_url').notNull().references(() => projects.primary_url),
-// 		categoriesSlug: text('categories_slug').notNull().references(() => categories.slug),
-// 	}, (t) => ({
-// 		pk: primaryKey(projects.primary_url, categories.slug),
-// 	}),
-// );
+export const projectsOnCategories = sqliteTable('projects_categories', {
+		projectPrimaryUrl: text('project_primary_url').notNull().references(() => projects.primary_url),
+		categoriesSlug: text('categories_slug').notNull().references(() => categories.slug),
+	}
+);
 
 
 export const topic = sqliteTable("topic", {

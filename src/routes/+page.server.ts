@@ -1,7 +1,7 @@
 import {db} from "../lib/server/db";
-import {project} from "../lib/server/db/schema";
+import {projects} from "../lib/server/db/schema";
 
 export async function load({params}) {
-	const projects = db.select().from(project)
-	return {...await projects};
+	const projectsData = db.select().from(projects)
+	return {...await projectsData};
 }

@@ -1,4 +1,5 @@
-import {project} from "../server/db/schema";
+import {categories, project, projects} from "../server/db/schema";
+import {InferSelectModel} from "drizzle-orm";
 
 export type AwwesomeConfig = {
 	chunkSize: number;
@@ -7,7 +8,12 @@ export type AwwesomeConfig = {
 	requestDelay?: number;
 };
 
-export type Project = typeof project.$inferInsert;
+export type Project = InferSelectModel<typeof projects> & {
+	categories: Category
+};
+
+export type Category = InferSelectModel<typeof categories>
+
 //
 //
 // export type Project = {
@@ -46,11 +52,11 @@ export interface AllCategories {
 	names: { [key: string]: string };
 }
 
-export type Category = {
-	slug: string;
-	name: string;
-	children?: Category[];
-};
+// export type Category = {
+// 	slug: string;
+// 	name: string;
+// 	children?: Category[];
+// };
 
 export interface ProjectCollection {
 	projects: Project[];

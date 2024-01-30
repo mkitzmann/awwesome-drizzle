@@ -1,12 +1,12 @@
 import {db} from "./index";
-import {project} from "./schema";
+import {projects} from "./schema";
 import * as crypto from "crypto";
 import {Project} from "../../types";
 
 
 
-export const addProjectAction = async (projects: Project[]) => {
-	db.insert(project)
-		.values(projects)
+export const addProjectAction = async (projectsInsert: Project[]) => {
+	db.insert(projects)
+		.values(projectsInsert)
 		.run();
 };
