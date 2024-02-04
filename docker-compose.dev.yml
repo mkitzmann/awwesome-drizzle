@@ -13,17 +13,18 @@ services:
       - POSTGRES_PASSWORD=postgres
 
   awwesome:
-    build: .
-#    command: "npm run dev --host 0.0.0.0"
+    image: node:alpine
+    container_name: awwesome
     ports:
-      - "5173:5173"
-#      - "24678:24678"
+      - "8000:8000"
+    working_dir: /src/app
     volumes:
-      - ./:/usr/src/app
-      - /usr/src/app/node_modules
+        - ./:/src/app
+    tty: true
+    command: npm run dev
 
-#  adminer:
-#    image: adminer:4.8.1
-#    restart: always
-#    ports:
-#      - "8080:8080"
+  adminer:
+    image: adminer:4.8.1
+    restart: always
+    ports:
+      - "8080:8080"

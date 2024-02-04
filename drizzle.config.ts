@@ -7,7 +7,7 @@ import type { Config } from 'drizzle-kit';
 export default {
 	schema: './src/lib/server/db/schema/index.ts',
 	out: './drizzle',
-	driver: 'better-sqlite',
+	driver: 'pg',
 	dbCredentials: {
 		url: 'awwesome.db'
 		// url: process.env.DB_URL!,
