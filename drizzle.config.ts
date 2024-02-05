@@ -1,6 +1,8 @@
 import type { Config } from 'drizzle-kit';
-// import dotenv from 'dotenv';
-
+const { DATABASE_URL } = process.env;
+if (!DATABASE_URL) {
+	throw new Error('No url');
+}
 // dotenv.config();
 
 // We need to make sure the in the tsconfig.json file, we need to change the target at least to 'ES6'
@@ -9,7 +11,6 @@ export default {
 	out: './drizzle',
 	driver: 'pg',
 	dbCredentials: {
-		url: 'awwesome.db'
-		// url: process.env.DB_URL!,
+		connectionString: DATABASE_URL
 	}
 } satisfies Config;

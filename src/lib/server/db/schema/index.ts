@@ -1,9 +1,11 @@
-import {text, integer, sqliteTable, primaryKey} from "drizzle-orm/sqlite-core";
-import {relations} from "drizzle-orm";
-import {int, mysqlTable, varchar} from "drizzle-orm/mysql-core";
+import { pgTable,serial,text } from "drizzle-orm/pg-core";
 
-export const projects = mysqlTable("projects", {
-	primaryUrl: int("primary_url"),
+export const myTable = pgTable("myTableName",{
+	id:serial("id").primaryKey(),
+	name:text("name").notNull(),
+})
+// export const projects = pgTable("projects", {
+// 	primaryUrl: integer("primary_url"),
 	// name: text("name"),
 	// source_url: text("source_url"),
 	// demo_url: text("demo_url"),
@@ -18,7 +20,7 @@ export const projects = mysqlTable("projects", {
 	// pushedAt: integer("pushed_at", {mode: 'timestamp'}),
 	// firstAdded: integer("first_added", {mode: 'timestamp'}),
 	// createdAt: integer("created_at", {mode: 'timestamp'}),
-});
+// });
 
 // export const projectRelations = relations(projects, ({ one, many }) => ({
 // 	categories: many(categories),
@@ -32,12 +34,12 @@ export const projects = mysqlTable("projects", {
 	// 	references: [topic.name],
 	// }),
 // }));
-
-export const commitCount = sqliteTable("commit_count", {
-	project_id: text("project_id"),
-	date: text("date"),
-	count: integer("count"),
-});
+//
+// export const commitCount = sqliteTable("commit_count", {
+// 	project_id: text("project_id"),
+// 	date: text("date"),
+// 	count: integer("count"),
+// });
 
 // export const commitCountRelations = relations(commitCount, ({ one }) => ({
 // 	project: one(project, {
@@ -46,23 +48,23 @@ export const commitCount = sqliteTable("commit_count", {
 // 	}),
 // }));
 //
-export const categories = sqliteTable("categories", {
-	slug: text("slug").primaryKey(),
-	name: text("name"),
-	parent_slug: text("parent_slug"),
-});
+// export const categories = sqliteTable("categories", {
+// 	slug: text("slug").primaryKey(),
+// 	name: text("name"),
+// 	parent_slug: text("parent_slug"),
+// });
 
 // export const categoriesRelations = relations(categories, ({ many }) => ({
 // 	projects: many(projects),
 // }));
 //
-export const projectsOnCategories = sqliteTable('projects_categories', {
-		projectPrimaryUrl: text('project_primary_url').notNull().references(() => projects.primary_url),
-		categoriesSlug: text('categories_slug').notNull().references(() => categories.slug),
-	}
-);
+// export const projectsOnCategories = sqliteTable('projects_categories', {
+// 		projectPrimaryUrl: text('project_primary_url').notNull().references(() => projects.primary_url),
+// 		categoriesSlug: text('categories_slug').notNull().references(() => categories.slug),
+// 	}
+// );
 
 
-export const topic = sqliteTable("topic", {
-	name: text("name").primaryKey(),
-});
+// export const topic = sqliteTable("topic", {
+// 	name: text("name").primaryKey(),
+// });

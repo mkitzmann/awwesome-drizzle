@@ -13,9 +13,9 @@
 		"format": "prettier --write .",
 		"test:integration": "playwright test",
 		"test:unit": "vitest",
-		"db:push": "drizzle-kit push:sqlite",
+		"db:push": "drizzle-kit push:pg",
 		"db:studio": "drizzle-kit studio",
-		"db:generate": "drizzle-kit generate:sqlite"
+		"db:generate": "drizzle-kit generate:pg"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
