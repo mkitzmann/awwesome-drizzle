@@ -74,10 +74,10 @@ export function extractRepositories(markdownText: string): ProjectsAndCategories
 			firstAdded: new Date(),
 			description: extractDescription(line),
 			stack: extractStack(line),
-			// license: extractLicense(line) ? { name: extractLicense(line) } : undefined,
+			license: extractLicense(line),
 			source_url: extractSourceUrl(line),
-			demo_url: extractDemoUrl(line)
-			// categories: currentCategoryURL
+			demo_url: extractDemoUrl(line),
+			categories: currentCategoryURL
 		};
 		projects.push(project);
 	}

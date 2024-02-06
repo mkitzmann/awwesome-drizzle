@@ -15,6 +15,13 @@
       "when": 1707251476456,
       "tag": "0001_groovy_mojo",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1707252329869,
+      "tag": "0002_soft_supreme_intelligence",
+      "breakpoints": true
     }
   ]
 }

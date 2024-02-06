@@ -10,16 +10,16 @@ export const projects = pgTable("projects", {
 	source_url: text("source_url"),
 	demo_url: text("demo_url"),
 	description: text("description"),
-	license: json("license"),
+	license: text("license"),
 	stack: text("stack"),
 	// categories: text("category"),
 	stars: integer("stars"),
 	avatar_url: text("avatar_url"),
 	// topics: text("topics", { mode: 'json' }),
 	commit_history: json("commit_history", ),
-	pushedAt: date("pushed_at"),
+	pushedAt: date("pushed_at", {mode: 'date'}),
 	firstAdded: date("first_added", {mode: 'date'}),
-	createdAt: date("created_at"),
+	createdAt: date("created_at", {mode: 'date'}),
 });
 
 // export const projectRelations = relations(projects, ({ one, many }) => ({
