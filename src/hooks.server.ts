@@ -21,12 +21,10 @@ export const getProjects = async () => {
 	return projectsInsert
 };
 
-const crawlerJob = schedule.scheduleJob('*/1 * * * *', async function () {
+const crawlerJob = schedule.scheduleJob('*/1 * * * *', async () => {
 	console.log(`${crawlerPrefix} started`)
 	const projectsInsert = await getProjects()
 	await addProjectAction(projectsInsert)
-	console.log(
-	);
 })
 
 
