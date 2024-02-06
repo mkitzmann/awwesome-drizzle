@@ -1,0 +1,20 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1707164849978,
+      "tag": "0000_hard_secret_warriors",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1707251476456,
+      "tag": "0001_groovy_mojo",
+      "breakpoints": true
+    }
+  ]
+}

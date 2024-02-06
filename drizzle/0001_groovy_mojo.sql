@@ -1,0 +1,1 @@
+ALTER TABLE "projects" ALTER COLUMN "primary_url" SET DATA TYPE text;
