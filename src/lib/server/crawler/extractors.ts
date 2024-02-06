@@ -16,6 +16,9 @@ export function extractName(input) {
 export function extractPrimaryUrl(input): string {
 	const regex = /\((https?:\/\/[^)]+)\)/;
 	const match = input.match(regex);
+	if (!match) {
+		return
+	}
 	return removeTrailingSlashes(match[1].trim());
 }
 

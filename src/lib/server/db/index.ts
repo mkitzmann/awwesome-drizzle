@@ -1,11 +1,12 @@
 import { drizzle } from 'drizzle-orm/postgres-js';
 import { migrate } from 'drizzle-orm/postgres-js/migrator';
 import postgres from 'postgres';
+import { DATABASE_URL } from '$env/static/private';
 
 // for migrations
-const migrationClient = postgres("postgres://postgres:adminadmin@0.0.0.0:5432/db", { max: 1 });
-migrate(drizzle(migrationClient))
+// const migrationClient = postgres("postgres://postgres:adminadmin@0.0.0.0:5432/db", { max: 1 });
+// migrate(drizzle(migrationClient))
 
 // for query purposes
-const queryClient = postgres("postgres://postgres:adminadmin@0.0.0.0:5432/db");
-const db = drizzle(queryClient);
+const queryClient = postgres(DATABASE_URL);
+export const db = drizzle(queryClient);

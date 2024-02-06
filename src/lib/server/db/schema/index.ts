@@ -1,26 +1,26 @@
-import { pgTable,serial,text } from "drizzle-orm/pg-core";
+import {date, integer, json, pgTable, serial, text} from "drizzle-orm/pg-core";
 
-export const myTable = pgTable("myTableName",{
-	id:serial("id").primaryKey(),
-	name:text("name").notNull(),
-})
-// export const projects = pgTable("projects", {
-// 	primaryUrl: integer("primary_url"),
-	// name: text("name"),
-	// source_url: text("source_url"),
-	// demo_url: text("demo_url"),
-	// description: text("description"),
-	// license: text("license", { mode: 'json' }),
-	// stack: text("stack"),
-	// // categories: text("category"),
-	// stars: integer("stars"),
-	// avatar_url: text("avatar_url"),
-	// // topics: text("topics", { mode: 'json' }),
-	// commit_history: text("commit_history", { mode: 'json' }),
-	// pushedAt: integer("pushed_at", {mode: 'timestamp'}),
-	// firstAdded: integer("first_added", {mode: 'timestamp'}),
-	// createdAt: integer("created_at", {mode: 'timestamp'}),
-// });
+// export const myTable = pgTable("myTableName",{
+// 	id:serial("id").primaryKey(),
+// 	name:text("name").notNull(),
+// })
+export const projects = pgTable("projects", {
+	primaryUrl: text("primary_url").primaryKey(),
+	name: text("name"),
+	source_url: text("source_url"),
+	demo_url: text("demo_url"),
+	description: text("description"),
+	license: json("license"),
+	stack: text("stack"),
+	// categories: text("category"),
+	stars: integer("stars"),
+	avatar_url: text("avatar_url"),
+	// topics: text("topics", { mode: 'json' }),
+	commit_history: json("commit_history", ),
+	pushedAt: date("pushed_at"),
+	firstAdded: date("first_added", {mode: 'date'}),
+	createdAt: date("created_at"),
+});
 
 // export const projectRelations = relations(projects, ({ one, many }) => ({
 // 	categories: many(categories),

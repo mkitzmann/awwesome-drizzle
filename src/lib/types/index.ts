@@ -1,4 +1,4 @@
-import {categories, project, projects} from "../server/db/schema";
+import {projects} from "../server/db/schema";
 import {InferSelectModel} from "drizzle-orm";
 
 export type AwwesomeConfig = {
@@ -10,10 +10,9 @@ export type AwwesomeConfig = {
 
 export type Project = typeof projects.$inferInsert;
 const test: Project = {
-	primaryUrl: 12
+	primaryUrl: 13
 }
-
-export type Category = InferSelectModel<typeof categories>
+// export type Category = typeof categories.$inferInsert
 
 //
 //

@@ -31,8 +31,6 @@ function transformObjectToArray(obj): Category[] {
 	return array;
 }
 
-
-
 export function extractRepositories(markdownText: string): ProjectsAndCategories {
 	const lines = markdownText.split('\n');
 	const projects: Project[] = [];
@@ -71,14 +69,14 @@ export function extractRepositories(markdownText: string): ProjectsAndCategories
 		}
 
 		const project: Project = {
-			primary_url: extractPrimaryUrl(line),
+			primaryUrl: extractPrimaryUrl(line),
 			name: extractName(line),
 			firstAdded: new Date(),
 			description: extractDescription(line),
 			stack: extractStack(line),
-			license: extractLicense(line) ? { name: extractLicense(line) } : undefined,
+			// license: extractLicense(line) ? { name: extractLicense(line) } : undefined,
 			source_url: extractSourceUrl(line),
-			demo_url: extractDemoUrl(line),
+			demo_url: extractDemoUrl(line)
 			// categories: currentCategoryURL
 		};
 		projects.push(project);
