@@ -1,7 +1,7 @@
-import {db} from "./index";
-import {projects} from "./schema";
-import {Project} from "../../types";
+import { db } from './index';
+import { projects } from './schema';
+import { Project } from '../../types';
 
-export const addProjectAction = async (projectsInsert: Project[]) => {
-	db.insert(projects).values(projectsInsert)
+export const addProjectsAction = async (projectsInsert: Project[]) => {
+	await db.insert(projects).values(projectsInsert).onConflictDoNothing();
 };

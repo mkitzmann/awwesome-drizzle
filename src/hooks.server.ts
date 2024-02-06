@@ -1,14 +1,13 @@
 import { getProjectsFromSources } from './lib/server/crawler';
-import { db } from './lib/server/db';
-import { projects } from './lib/server/db/schema';
 import { Project } from './lib/types';
 import { CronJob } from 'cron';
+import { addProjectsAction } from './lib/server/db/actions';
 
 const crawlerPrefix = '\x1B[34m[crawler] ';
 
-export const addProjectAction = async (projectsInsert: Project[]) => {
+export const addProjects = async (projectsInsert: Project[]) => {
 	const start = Date.now();
-	await db.insert(projects).values(projectsInsert).onConflictDoNothing();
+	await addProjectsAction(projectsInsert);
 	const end = Date.now();
 	console.log(`${crawlerPrefix} added ${projectsInsert.length} projects to db in ${end - start}ms`);
 };
@@ -24,7 +23,7 @@ export const getProjects = async () => {
 const crawlTask = async () => {
 	console.log(`${crawlerPrefix} started at ${new Date().toISOString()}`);
 	const projectsInsert = await getProjects();
-	await addProjectAction(projectsInsert);
+	await addProjects(projectsInsert);
 };
 
 const crawlerJob = CronJob.from({
